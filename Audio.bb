@@ -39,6 +39,8 @@ Global SND_BAT_BOUND
 
 Global SND_SPECIAL_EXTEND
 Global SND_SPECIAL_REDUCE
+Global SND_SPECIAL_FADE
+Global SND_SPECIAL_SLOW
 Global SND_SPECIAL_MULTIBALL
 Global SND_SPECIAL_SCORE
 
@@ -59,6 +61,56 @@ Global AUDIO_MATCH_END
 Global CURRENT_AUDIO_FEATURE
 Global AF_SCROLL_U#
 Global AF_SCROLL_V#
+
+Function PlayBallSound(BallSound)
+	If (CHN_SFX_BALL)
+		If ChannelPlaying(CHN_SFX_BALL)
+			StopChannel CHN_SFX_BALL
+		End If
+	End If	
+	
+	CHN_SFX_BALL=PlaySound(BallSound)	
+End Function		
+
+Function PlayBrickSound(BrickSound)
+	If (CHN_SFX_BRICK)
+		If ChannelPlaying(CHN_SFX_BRICK)
+			StopChannel CHN_SFX_BRICK
+		End If
+	End If	
+	
+	CHN_SFX_BRICK=PlaySound(BrickSound)	
+End Function		
+
+Function PlayBatSound(BatSound)
+	If (CHN_SFX_BAT)
+		If ChannelPlaying(CHN_SFX_BAT)
+			StopChannel CHN_SFX_BAT
+		End If
+	End If	
+	
+	CHN_SFX_BAT=PlaySound(BatSound)	
+End Function		
+
+Function PlayAlienSound(AlienSound)
+	If (CHN_SFX_ALIEN)
+		If ChannelPlaying(CHN_SFX_ALIEN)
+			StopChannel CHN_SFX_ALIEN
+		End If
+	End If	
+	
+	CHN_SFX_ALIEN=PlaySound(AlienSound)	
+End Function		
+
+Function PlaySpecialSound(SpecialSound)
+	If (CHN_SFX_SPECIAL)
+		If ChannelPlaying(CHN_SFX_SPECIAL)
+			StopChannel CHN_SFX_SPECIAL
+		End If
+	End If	
+	
+	CHN_SFX_SPECIAL=PlaySound(SpecialSound)	
+End Function
 
 Function AudioFeature()
 	If (STATE=STATE_ATTRACT)
@@ -327,5 +379,5 @@ Function ChangeMusic(ThemePath$,NotifyThemeChange=True)
 	AUDIO_TIMESTAMP=MilliSecs()
 End Function
 ;~IDEal Editor Parameters:
-;~F#3E#73#107
+;~F#72#A7#13B
 ;~C#Blitz3D

@@ -127,17 +127,25 @@ Function InitialiseDefaultConfigs()
 End Function
 
 Function InitialiseSounds()
-	;SND_BALL_BOUNCE_BAT=LoadSound(SOUNDPATH+"bouncebat.ogg")
-	;SND_BALL_BOUNCE_BOUND=LoadSound(SOUNDPATH+"bouncewall.ogg")
-	;SND_BAT_BOUND=LoadSound(SOUNDPATH+"batwall.ogg")
-	;SND_ALIEN_SPAWN=LoadSound(SOUNDPATH+"alienspawn.ogg")
-	;SND_ALIEN_DESTROY=LoadSound(SOUNDPATH+"aliendestroy.ogg")
+	SND_BALL_BOUNCE_BAT=LoadSound(SOUNDPATH+"bouncebat.ogg")
+	SND_BALL_BOUNCE_BOUND=LoadSound(SOUNDPATH+"bouncewall.ogg")
+	SND_BAT_BOUND=LoadSound(SOUNDPATH+"batwall.ogg")
+	SND_ALIEN_SPAWN=LoadSound(SOUNDPATH+"alienspawn.ogg")
+	SND_ALIEN_DESTROY=LoadSound(SOUNDPATH+"aliendestroy.ogg")
 ;	;SND_BRICK_DAMAGE=LoadSound(SOUNDPATH+"brickdamage.ogg")
-	;SND_BRICK_DESTROY=LoadSound(SOUNDPATH+"brickdestroy.ogg")
-	;SND_BRICK_INVINCIBLE=LoadSound(SOUNDPATH+"brickinvincible.ogg")
-	;SND_BRICK_IMPOSSIBLE_TIMEOUT=LoadSound(SOUNDPATH+"invincibledestroy.ogg")
-	;SND_PLAYER_LIFELOST=LoadSound(SOUNDPATH+"lifelost.ogg")
-	;SND_PLAYER_LIFEGAINED=LoadSound(SOUNDPATH+"lifegained.ogg")
+	SND_BRICK_DESTROY=LoadSound(SOUNDPATH+"brickdestroy.ogg")
+	SND_BRICK_INVINCIBLE=LoadSound(SOUNDPATH+"brickinvincible.ogg")
+	SND_BRICK_IMPOSSIBLE_TIMEOUT=LoadSound(SOUNDPATH+"invincibledestroy.ogg")
+	SND_PLAYER_LIFELOST=LoadSound(SOUNDPATH+"lifelost.ogg")
+	SND_PLAYER_LIFEGAINED=LoadSound(SOUNDPATH+"lifegained.ogg")
+	
+	SND_SPECIAL_EXTEND=LoadSound(SOUNDPATH+"specialextend.ogg")
+	SND_SPECIAL_FADE=LoadSound(SOUNDPATH+"specialfade.ogg")
+	SND_SPECIAL_SLOW=LoadSound(SOUNDPATH+"specialslow.ogg")
+	SND_SPECIAL_REDUCE=LoadSound(SOUNDPATH+"specialreduce.ogg")
+	SND_SPECIAL_MULTIBALL=LoadSound(SOUNDPATH+"specialmulti.ogg")
+	SND_SPECIAL_SCORE=LoadSound(SOUNDPATH+"specialscore.ogg")
+	
 End Function
 
 Function InitialiseBackground()
@@ -458,6 +466,6 @@ Function InitialiseRoundFeatures()
 	
 End Function
 ;~IDEal Editor Parameters:
-;~F#0#21#30#34#61#65#6A#70#80#8E#9D#B1#C4#D5#107#119#13B#141#145#149
-;~F#150#162#17F#1A3#1A7#1B1#1B8#1BD
+;~F#0#21#30#34#61#65#6A#70#96#A5#B9#CC#DD#10F#121#143#149#14D#151#158
+;~F#16A#187#1AB#1AF#1B9#1C0#1C5
 ;~C#Blitz3D
