@@ -81,12 +81,12 @@ End Function
 
 Function MovementControl()
 	
-	Local x=ControlMoveInputResult()
+	Local X=ControlMoveInputResult()
 	
-	If (x)
-		BATSPEED=BATSPEED+(BAT_SPEED_INCREMENT*x)
+	If (X)
+		BATSPEED=BATSPEED+(BAT_SPEED_INCREMENT*X)
 		If (Abs(BATSPEED)>=BATSPEED_MAX)
-			BATSPEED=BATSPEED-(BAT_SPEED_INCREMENT*x)
+			BATSPEED=BATSPEED-(BAT_SPEED_INCREMENT*X)
 		End If
 	Else
 		;Inertial dampening

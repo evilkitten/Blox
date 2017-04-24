@@ -13,10 +13,14 @@ Function BatBoundary()
 	
 	If (X>=BOUNDARY_W)
 		PositionEntity BAT, BOUNDARY_W-1,0,GENERIC_Z_OFFSET,True
+		PlayBatSound(SND_BAT_BOUND)
+		
 	End If
 	
 	If (X=<(0-BOUNDARY_W))
 		PositionEntity BAT, 0-(BOUNDARY_W-1),0,GENERIC_Z_OFFSET,True
+		PlayBatSound(SND_BAT_BOUND)
+		
 	End If
 	
 End Function
@@ -28,15 +32,17 @@ Function BallBoundary(B.BALL)
 	Local Y#=EntityY(B\Entity,True)
 	
 	If (X#>BOUNDARY_W)
-		Bounce(B,BOUND_RIGHT,-1.0,0.0)
+		PlayBallSound(SND_BALL_BOUNCE_BOUND)
+		Bounce(B,BOUND_RIGHT,-1.0,.0)
 	End If
 	If (X#<(0-BOUNDARY_W))
-		Bounce(B,BOUND_LEFT,1,0.0)
+		PlayBallSound(SND_BALL_BOUNCE_BOUND)
+		Bounce(B,BOUND_LEFT,1.0,0.0)
 	End If
 	If ((Y#>BOUNDARY_H))
+		PlayBallSound(SND_BALL_BOUNCE_BOUND)
 		Bounce(B,BOUND_UP,0.0,-1.0)
-	End If
-	
+	End If	
 End Function
 
 Function Bounce(B.BALL, Entity,nX#,nY#)	
@@ -57,9 +63,12 @@ Function Bounce(B.BALL, Entity,nX#,nY#)
 		B\VelY# = B\VelY# + NFy#
 		
 		Local SpeedModifier#
+		Local BatCol=(Entity=BAT)Or(Entity=BATENDL)Or(Entity=BATENDR)Or(Entity=BATMID)
 		
-		
-		If (Entity=BAT)Or(Entity=BATENDL)Or(Entity=BATENDR)Or(Entity=BATMID)
+		If (BatCol) And EntityY(B\Entity)<((BAT_THICKSIZE+(MeshHeight(B\Entity)*0.5))+BALL_SIZE)
+			
+			PlayBallSound(SND_BALL_BOUNCE_BAT)
+			
 			SpeedModifier =	BAT_COLLISIONBALL_INFLUENCE*Sgn(BATSPEED)
 		End If		
 		
@@ -99,7 +108,7 @@ Function Bounce(B.BALL, Entity,nX#,nY#)
 		
 		If (EntityCollided(B\Entity,COLLISION_BRICK)=Entity)
 			
-			;Hpoefully this should fix rare exception situations (typically multiballs both colliding with same brick)
+			;Hopefully this should fix rare exception situations (typically multiballs both colliding with same brick)
 			RemoveThisCollisionForAllObjects(Entity)
 			;ResetEntity Entity
 			;ResetEntity B\Entity
@@ -114,6 +123,8 @@ Function Bounce(B.BALL, Entity,nX#,nY#)
 				KillAlien(GetAlienFromEntity(Entity))
 			Else
 				
+				If Not(BatCol) Then PlayBallSound(SND_BALL_BOUNCE_BOUND)
+				
 			;Removed - There are serious issues with the Blitz3D collision system that make it impossible to have a CATCH special power up.
 				
 ;				If (EntityCollided(B\Entity,COLLISION_BAT)=Entity)
@@ -126,7 +137,7 @@ Function Bounce(B.BALL, Entity,nX#,nY#)
 ;				End If
 				
 				ResetEntity B\Entity
-				;ResetEntity Entity	
+				ResetEntity Entity	;Uncommenting this has not yet resulted in collision bugs. 
 			End If
 		End If
 	End If
@@ -191,5 +202,5 @@ Function RoundedTrig#(Result#)
 	Return Result#
 End Function
 ;~IDEal Editor Parameters:
-;~F#8#17#86#91#B0#BA
+;~F#8#1B#2F#91#9C#BB#C5
 ;~C#Blitz3D

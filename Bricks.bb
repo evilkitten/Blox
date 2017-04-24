@@ -202,6 +202,10 @@ Function AttemptToDestroyBrick(BR.BRICK_DATA)
 ;		Else
 			AddScore(BR\Points)
 			If (ChanceToSpawnSpecial()) Then SpawnSpecial(BR\X,BR\Y)
+			
+			PlayBrickSound(SND_BRICK_DESTROY)
+			
+			
 			ExplodeBrick(BR)
 			DestroyBrick(BR)
 			STAGE_DESTRUCTABLE_BRICKS=STAGE_DESTRUCTABLE_BRICKS-1
@@ -210,7 +214,12 @@ Function AttemptToDestroyBrick(BR.BRICK_DATA)
 				NextRound
 			End If
 ;		End If
+			
+		Else		
+			PlayBrickSound(SND_BRICK_INVINCIBLE)
 		End If
+		
+		
 End Function
 
 Function ExplodeBrick(BR.BRICK_DATA)
@@ -223,6 +232,12 @@ Function ExplodeBrick(BR.BRICK_DATA)
 	
 	CreateExplosion(X,Y,R,G,B,True)
 End Function	
+
+Function UpdateBricks()
+	If (CheckForImpossibleBrickTimeout())
+		RemoveImpossibleBricks
+	End If
+End Function
 
 Function DemoteBrick(BR.BRICK_DATA)
 	Local X#=BR\X
@@ -258,5 +273,5 @@ Function DestroyBrick(BR.BRICK_DATA)
 	Delete BR
 End Function
 ;~IDEal Editor Parameters:
-;~F#11#28#3A#4F#61#75#AE#B2#B6#C0#D7#E2
+;~F#11#28#3A#4F#61#75#AE#B2#B6#C0#C5#E0#EB#F1#10B
 ;~C#Blitz3D

@@ -19,10 +19,10 @@ Type EXPLOSIONSHARDS
 End Type
 
 Function CreateExplosion(X#,Y#,R,G,B,Transp=True)
-	Local E.Explosion=New Explosion
+	Local E.EXPLOSION=New EXPLOSION
 	Local S
 	
-	E\Shine.Shine=CreateShine(X,Y,BRICKW Shl True,BRICKH Shl True)
+	E\Shine.SHINE=CreateShine(X,Y,BRICKW Shl True,BRICKH Shl True)
 	
 	For S=0 To EXP_SHARDS-1
 		E\Shards[S]=CreateShard(E,X#,Y#,R,G,B,Transp)
@@ -113,7 +113,7 @@ Function UpdateExplosionShard(ES.EXPLOSIONSHARDS)
 		Delete ES
 	End If
 End Function
-		
+	
 ;~IDEal Editor Parameters:
 ;~F#5#D#14#21#3E#50#64
 ;~C#Blitz3D

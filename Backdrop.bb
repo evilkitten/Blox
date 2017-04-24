@@ -102,5 +102,5 @@ Function GetBackdropData()
 	
 End Function
 ;~IDEal Editor Parameters:
-;~F#16#1E
+;~F#16
 ;~C#Blitz3D

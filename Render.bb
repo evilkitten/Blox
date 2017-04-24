@@ -52,7 +52,7 @@ Function CallRender()
 	
 	ShowHud
 	Flip False
-	CheckForImpossibleBrickTimeout
+	
 	FrameLimit
 End Function
 
@@ -358,5 +358,5 @@ Function RandomColourComponent()
 	Return C
 End Function
 ;~IDEal Editor Parameters:
-;~F#43#6D#75#7D#85#9A#C3#D7#118#160
+;~F#30#3A#43#6D#75#7D#85#9A#C3#D7#118#160
 ;~C#Blitz3D

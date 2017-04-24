@@ -22,20 +22,29 @@ Global CHN_SFX_BRICK
 Global CHN_SFX_BAT
 Global CHN_SFX_ALIEN
 Global CHN_SFX_SPECIAL
+Global CHN_SFX_PLAYER
 
 Global SND_THEME
+
+Global SND_MENU_CHANGE
+Global SND_MENU_SELECT
+
+Global SND_BALL_BOUNCE_BOUND
+Global SND_BALL_BOUNCE_BAT
 
 Global SND_BRICK_DESTROY
 ;Global SND_BRICK_DAMAGE
 Global SND_BRICK_INVINCIBLE
 
+Global SND_BRICK_IMPOSSIBLE_TIMEOUT
+
+Global SND_BAT_BOUND
+
 Global SND_ALIEN_SPAWN
 Global SND_ALIEN_DESTROY
 
-Global SND_BALL_BOUNCE_BOUND
-Global SND_BALL_BOUNCE_BAT
-
-Global SND_BAT_BOUND
+Global SND_PLAYER_LIFELOST
+Global SND_PLAYER_LIFEGAINED
 
 Global SND_SPECIAL_EXTEND
 Global SND_SPECIAL_REDUCE
@@ -43,11 +52,6 @@ Global SND_SPECIAL_FADE
 Global SND_SPECIAL_SLOW
 Global SND_SPECIAL_MULTIBALL
 Global SND_SPECIAL_SCORE
-
-Global SND_BRICK_IMPOSSIBLE_TIMEOUT
-
-Global SND_PLAYER_LIFELOST
-Global SND_PLAYER_LIFEGAINED
 
 Global AUDIO_TIMESTAMP
 
@@ -69,37 +73,45 @@ Function PlayBallSound(BallSound)
 		End If
 	End If	
 	
-	CHN_SFX_BALL=PlaySound(BallSound)	
+	If 	(STATE<>STATE_ATTRACT)
+		CHN_SFX_BALL=PlaySound(BallSound)	
+	End If
 End Function		
 
 Function PlayBrickSound(BrickSound)
 	If (CHN_SFX_BRICK)
-		If ChannelPlaying(CHN_SFX_BRICK)
-			StopChannel CHN_SFX_BRICK
-		End If
-	End If	
-	
-	CHN_SFX_BRICK=PlaySound(BrickSound)	
+			If ChannelPlaying(CHN_SFX_BRICK)
+				StopChannel CHN_SFX_BRICK
+			End If
+		End If	
+		
+		If 	(STATE<>STATE_ATTRACT)
+			CHN_SFX_BRICK=PlaySound(BrickSound)	
+	End If
 End Function		
 
 Function PlayBatSound(BatSound)
 	If (CHN_SFX_BAT)
-		If ChannelPlaying(CHN_SFX_BAT)
-			StopChannel CHN_SFX_BAT
-		End If
-	End If	
-	
-	CHN_SFX_BAT=PlaySound(BatSound)	
+			If ChannelPlaying(CHN_SFX_BAT)
+				StopChannel CHN_SFX_BAT
+			End If
+		End If	
+		
+		If 	(STATE<>STATE_ATTRACT)
+		CHN_SFX_BAT=PlaySound(BatSound)	
+	End If
 End Function		
 
 Function PlayAlienSound(AlienSound)
-	If (CHN_SFX_ALIEN)
-		If ChannelPlaying(CHN_SFX_ALIEN)
-			StopChannel CHN_SFX_ALIEN
-		End If
-	End If	
-	
-	CHN_SFX_ALIEN=PlaySound(AlienSound)	
+		If (CHN_SFX_ALIEN)
+			If ChannelPlaying(CHN_SFX_ALIEN)
+				StopChannel CHN_SFX_ALIEN
+			End If
+		End If	
+		
+		If 	(STATE<>STATE_ATTRACT)
+		CHN_SFX_ALIEN=PlaySound(AlienSound)	
+	End If
 End Function		
 
 Function PlaySpecialSound(SpecialSound)
@@ -109,7 +121,21 @@ Function PlaySpecialSound(SpecialSound)
 		End If
 	End If	
 	
-	CHN_SFX_SPECIAL=PlaySound(SpecialSound)	
+	If 	(STATE<>STATE_ATTRACT)
+		CHN_SFX_SPECIAL=PlaySound(SpecialSound)	
+	End If
+End Function
+
+Function PlayPlayerSound(PlayerSound)
+	If (CHN_SFX_PLAYER)
+		If ChannelPlaying(CHN_SFX_PLAYER)
+			StopChannel CHN_SFX_PLAYER
+		End If
+	End If	
+	
+	If 	(STATE<>STATE_ATTRACT)
+		CHN_SFX_PLAYER=PlaySound(PlayerSound)
+	End If
 End Function
 
 Function AudioFeature()
@@ -379,5 +405,5 @@ Function ChangeMusic(ThemePath$,NotifyThemeChange=True)
 	AUDIO_TIMESTAMP=MilliSecs()
 End Function
 ;~IDEal Editor Parameters:
-;~F#72#A7#13B
+;~F#44#50#5C#68#74#80#8C#C1#155#182
 ;~C#Blitz3D

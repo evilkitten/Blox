@@ -52,6 +52,7 @@ End Function
 Function DoDeath()
 	If (STATE=STATE_GAME)
 		;There are rare occurrences where CPU is not able to cathch the ball.
+		PlayPlayerSound(SND_PLAYER_LIFELOST)
 		PLAYER_LIVES=PLAYER_LIVES-1
 		WriteLog("Life Lost. Current lives now "+Str(PLAYER_LIVES))
 		ShowRemainingLives
@@ -85,6 +86,7 @@ Function AddScore(Points)
 End Function
 
 Function AwardExtraLife()
+	PlayPlayerSound(SND_PLAYER_LIFEGAINED)
 	PLAYER_LIVES=PLAYER_LIVES+1
 	WriteLog("Life awarded. Current lives now "+Str(PLAYER_LIVES))
 	ShowRemainingLives
@@ -175,7 +177,8 @@ Function Animation()
 	UpdateBatInt
 	UpdateExplosions
 	UpdateSpecials
+	UpdateBricks
 End Function
 ;~IDEal Editor Parameters:
-;~F#A#F#2D#33#44#56#5C#65#6A#82#A4
+;~F#A#F#15#2D#33#45#57#5E#67#6C#84#A6
 ;~C#Blitz3D

@@ -56,14 +56,19 @@ Function BatMotion()
 End Function
 
 Function BatShine()
-	Local Shiner
-	If BATSPEED>0 Then Shiner= BATENDL
-	If BATSPEED<0 Then Shiner= BATENDR
-	
-	If (Shiner)
-		;CreateShine(EntityX(Shiner,True),0,BAT_THICKSIZE*2*BATSPEED,BAT_THICKSIZE*BATSPEED,BAT_SHINE_COLOUR,BAT_SHINE_TRANSPARENCY)
-		CreateShine(EntityX(Shiner,True),0,BAT_THICKSIZE*2*BATSPEED,BAT_THICKSIZE*BATSPEED, BAT_ANIM_COLR+(BAT_ANIM_COLG Shl 8)+(BAT_ANIM_COLB Shl 16),BAT_SHINE_TRANSPARENCY)
+	If (	STATE=STATE_GAME)
+		
+		Local Shiner
+		If BATSPEED>0 Then Shiner= BATENDL
+		If BATSPEED<0 Then Shiner= BATENDR
+		
+		If (Shiner)
+					;CreateShine(EntityX(Shiner,True),0,BAT_THICKSIZE*2*BATSPEED,BAT_THICKSIZE*BATSPEED,BAT_SHINE_COLOUR,BAT_SHINE_TRANSPARENCY)
+			CreateShine(EntityX(Shiner,True),0,BAT_THICKSIZE*2*BATSPEED,BAT_THICKSIZE*BATSPEED, BAT_ANIM_COLR+(BAT_ANIM_COLG Shl 8)+(BAT_ANIM_COLB Shl 16),BAT_SHINE_TRANSPARENCY)
+		End If
+		
 	End If
+	
 End Function
 
 Function UpdateBat()
@@ -157,5 +162,5 @@ Function ResetBatSize()
 	WriteLog("Bat Size Reset. Bat length now "+Str(BAT_LENGTHSIZE));+" Actual internal Width "+Str(MeshWidth(BATINT)))
 End Function
 ;~IDEal Editor Parameters:
-;~F#34#39#44#66#6E#75#7E#89#96
+;~F#34#39#49#6B#73#7A#83#8E#9B
 ;~C#Blitz3D

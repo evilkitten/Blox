@@ -69,14 +69,19 @@ Function DoPowerUp(SpecialType)
 	
 	Select SpecialType
 		Case SPECIAL_EXTEND:
+			PlaySpecialSound(SND_SPECIAL_EXTEND)
 			ExtendBat
 		Case SPECIAL_SHRINK:
+			PlaySpecialSound(SND_SPECIAL_REDUCE)
 			ShrinkBat
 		Case SPECIAL_FADE:
+			PlaySpecialSound(SND_SPECIAL_FADE)
 			FadeOn
 		Case SPECIAL_SLOW:
+			PlaySpecialSound(SND_SPECIAL_SLOW)
 			SlowBall
 		Case SPECIAL_MULTIBALL:
+			PlaySpecialSound(SND_SPECIAL_MULTIBALL)
 			Local Multi
 			For Multi= 1 To MULTIBALL_ADD
 				AddBallToPlay()
@@ -85,6 +90,7 @@ Function DoPowerUp(SpecialType)
 			If (ExtraLifeAwardValid()) Then AwardExtraLife
 		Default:
 			;Case SPECIAL_SCORE:
+			PlaySpecialSound(SND_SPECIAL_SCORE)
 			AddScore(SPECIAL_SCORE_POINTS)	
 	End Select
 	
@@ -288,5 +294,5 @@ Function AddBallToPlay()
 	End If
 End Function
 ;~IDEal Editor Parameters:
-;~F#1A#21#38#42#61#6A#7A#86#95#99#B7#C0#DB#F7#100#10A
+;~F#1A#21#38#42#67#70#80#8C#9B#9F#BD#C6#E1#FD#106#110
 ;~C#Blitz3D

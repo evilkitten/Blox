@@ -166,10 +166,10 @@ Function CheckForImpossibleBrickTimeout()
 	;To prevent expåloit, an incrementing variable is used (which only increases with frames) rather than millisecond timer. 
 	If (IMPOSSIBLE_BRICKS_REMOVED=False)
 		If (INCREASING_FRAME_TIMER>(IMPOSSIBLE_BRICK_ROUND_TIMEOUT/MAX_FRAME_INTERVAL))
-			RemoveImpossibleBricks
-			IMPOSSIBLE_BRICKS_REMOVED=True
+			Return True
 		End If
 	End If
+	Return False
 End Function
 
 Function ResetLivesAndScore()

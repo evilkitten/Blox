@@ -33,11 +33,24 @@ Function UpdateShines()
 		If (S\Alpha>0.0)
 			EntityAlpha S\Entity,S\Alpha	
 		Else
-			FreeEntity S\Entity
-			Delete S
+			DestroyShine(S)
 		End If
 	Next
 End Function
+
+Function DestroyShine(S.SHINE)
+	If (S<>Null)
+		FreeEntity S\Entity
+		Delete S
+	End If
+End Function
+
+;Function ClearAllShines()
+;	Local S.SHINE
+;	For S=Each SHINE
+;		DestroyShine(S)
+;	Next
+;End Function
 ;~IDEal Editor Parameters:
-;~F#B#10#1C
+;~F#B#1C#28
 ;~C#Blitz3D

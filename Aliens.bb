@@ -77,14 +77,18 @@ Function GetRandomAlienY#(Side)
 End Function
 
 Function KillAlien(A.ALIEN)
+	
+	PlayAlienSound(SND_ALIEN_DESTROY)
+	
+	
 	CreateExplosion(EntityX#(A\Entity ,True),EntityY#(A\Entity,True),A\R,A\G,A\B)
 	DestroyAlien(A)
 End Function
 
 Function DestroyAllAliens()
-	Local A.Alien
+	Local A.ALIEN
 	Local Counter
-	For A=Each Alien
+	For A=Each ALIEN
 		If (A<>Null)
 			DestroyAlien(A,False)
 			Counter=Counter+1
@@ -131,6 +135,10 @@ Function SpawnAlien(X#,Y#)
 	NameEntity A\Entity,Str(Handle(A))
 	
 	ALIEN_COUNT=ALIEN_COUNT+1
+	
+	
+	PlayAlienSound(SND_ALIEN_SPAWN)
+	
 	
 	WriteLog("Spawned Alien #"+Str(ALIEN_COUNT)+" Type "+Str(T)+" at "+Str(X)+","+Str(Y))
 	
@@ -261,5 +269,5 @@ Function UpdateAlienColour(A.ALIEN)
 	EntityColor A\Entity,A\R,A\G,A\B
 End Function
 ;~IDEal Editor Parameters:
-;~F#20#2A#2E#32#40#4E#53#60#68#8A#92#C2#D6#DC#E0#F5
+;~F#20#2A#2E#32#40#4E#57#64#6C#92#9A#CA#DE#E4#E8#FD
 ;~C#Blitz3D

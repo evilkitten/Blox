@@ -782,11 +782,19 @@ End Function
 
 Function RemoveImpossibleBricks()
 	Local BR.BRICK_DATA
+	Local ImpossibleBricks=False
 	For BR= Each BRICK_DATA
 		If (BR\BrickType=BRICK_INVINCIBLE)
+			ImpossibleBricks=True
 			DestroyBrick(BR)
 		End If
 	Next
+	
+	If (ImpossibleBricks)
+		WriteLog("Removing impossible bricks due to timeout.")
+		PlayBrickSound(SND_BRICK_IMPOSSIBLE_TIMEOUT)
+	End If
+	IMPOSSIBLE_BRICKS_REMOVED=True
 End Function	
 
 Function SpecialCaseAuditInvincibleImpossibility()
@@ -826,5 +834,5 @@ Function SpecialCaseAuditInvincibleImpossibility()
 End Function
 ;~IDEal Editor Parameters:
 ;~F#1D#44#4C#53#5F#78#8C#9F#B2#B6#135#199#1B6#1D1#1EC#1FF#212#222#23E#272
-;~F#28F#2A1#2A5#2D1#2DD#2FF#30E#317
+;~F#28F#2A1#2A5#2D1#2DD#2FF#30E#31F
 ;~C#Blitz3D

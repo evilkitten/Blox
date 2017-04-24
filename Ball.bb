@@ -55,6 +55,8 @@ Function SpawnBall.BALL(Angle=BALLINITIALANGLE,Speed#=BALL_INITIALSPEED)
 	PositionEntity B\Entity,0,BAT_THICKSIZE+(MeshHeight(B\Entity)*0.5),GENERIC_Z_OFFSET,True
 	
 	EntityRadius B\Entity,BALL_SIZE,BALL_SIZE
+	;EntityBox B\Entity,0,0,0,BALL_SIZE,BALL_SIZE,BALL_SIZE
+	
 	EntityType B\Entity,COLLISION_BALL
 	
 	B\VelX=Sin(Angle)*Speed
@@ -180,5 +182,5 @@ Function LaunchBall()
 	End If
 End Function
 ;~IDEal Editor Parameters:
-;~F#0#21#29#45#59#67#6B#79#97#A1
+;~F#0#21#29#47#5B#69#6D#7B#99#A3
 ;~C#Blitz3D

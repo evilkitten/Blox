@@ -5,32 +5,17 @@ Type CREDITS
 End Type
 
 Function PopulateCredits()
+	Restore C_
+	
+	Local Credit$
 	Local C.CREDITS
+	Credit=ReadCredit()
 	
-	C=New CREDITS
-	C\AccreditationLine="BLOX"
-	
-	C=New CREDITS
-	C\AccreditationLine="BY"
-	
-	C=New CREDITS
-	C\AccreditationLine="PJCHOWDHURY"
-	
-	C=New CREDITS
-	C\AccreditationLine="SCORE"
-	
-	C=New CREDITS
-	C\AccreditationLine="BENJAMINTISSOT"
-	
-	C=New CREDITS
-	C\AccreditationLine="QATESTERS"
-	
-	C=New CREDITS
-	C\AccreditationLine="JAMESREEVES"
-	
-	C=New CREDITS
-	C\AccreditationLine="THERESEWIHLNEY"
-	
+	Repeat
+		C=New CREDITS
+		C\AccreditationLine=Credit
+		Credit=ReadCredit()
+	Until (Credit="")
 End Function
 
 Function ScrollCredits()
@@ -41,7 +26,7 @@ Function ScrollCredits()
 	Local X=GWIDTH*0.5
 	Local Y=GHEIGHT*0.5
 	Local Image
-	Local C.Credits=First Credits
+	Local C.CREDITS=First CREDITS
 	
 	Local TimeDifference
 	Local CreditsDisplayTimestamp=MilliSecs()
@@ -90,6 +75,26 @@ Function ScrollCredits()
 		ChangeToAttractMode
 	End If
 End Function
+
+Function ReadCredit$()
+	Local C$
+	Local Byte
+	Read Byte
+	
+	If (Byte=-1)
+		Return ""
+	Else
+		While (Byte)
+			If (Byte=0) Then Exit
+			If (Byte<27) Then C=C+Chr(Byte+64)
+			Read Byte
+		Wend
+	End If
+
+	C= Replace(Trim(C)," ","")
+	
+	Return C
+End Function
 ;~IDEal Editor Parameters:
-;~F#2#6#23
+;~F#2#6#14#4E
 ;~C#Blitz3D
