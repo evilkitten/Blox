@@ -6,6 +6,12 @@ Const AUDIO_DEFAULT_MUS_VOL#=0.85
 
 Const THEMECOUNT=5
 
+;Original Sample Frequency of 8000 Hz
+Const AUDIO_RAW_FREQUENCY%=8000
+
+Const AUDIO_PITCH_MODULATION_MAX#=1.0625
+Const AUDIO_PITCH_MODULATION_MIN#=0.9375
+
 Const AF_1=1
 Const AF_2=2
 Const AF_3=3
@@ -66,7 +72,7 @@ Global CURRENT_AUDIO_FEATURE
 Global AF_SCROLL_U#
 Global AF_SCROLL_V#
 
-Function PlayBallSound(BallSound)
+Function PlayBallSound(BallSound,Modulate=False)
 	If (CHN_SFX_BALL)
 		If ChannelPlaying(CHN_SFX_BALL)
 			StopChannel CHN_SFX_BALL
@@ -74,7 +80,15 @@ Function PlayBallSound(BallSound)
 	End If	
 	
 	If 	(STATE<>STATE_ATTRACT)
-		CHN_SFX_BALL=PlaySound(BallSound)	
+		;Modulation
+		If (Modulate)
+			Local Modulation#=Rnd#(AUDIO_PITCH_MODULATION_MIN#,AUDIO_PITCH_MODULATION_MAX#)
+			SoundPitch BallSound,(AUDIO_RAW_FREQUENCY*Modulation)
+		Else
+			SoundPitch BallSound,AUDIO_RAW_FREQUENCY
+		End If
+		
+		CHN_SFX_BALL=PlaySound(BallSound)
 	End If
 End Function		
 
@@ -405,5 +419,5 @@ Function ChangeMusic(ThemePath$,NotifyThemeChange=True)
 	AUDIO_TIMESTAMP=MilliSecs()
 End Function
 ;~IDEal Editor Parameters:
-;~F#44#50#5C#68#74#80#8C#C1#155#182
+;~F#4A#5E#6A#76#82#8E#9A#CF#163#190
 ;~C#Blitz3D

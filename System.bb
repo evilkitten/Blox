@@ -41,7 +41,6 @@ Function ReadConfig()
 	If (File)
 	ReadConfigLines(File)
 	CloseFile File
-	Else DebugLog("Config file unavailable: "+CONFIGPATH)
 End If
 
 End Function
@@ -49,7 +48,6 @@ End Function
 Function WriteData()
 	Local File=WriteFile(DATAPATH)
 	If (Not(File))
-		DebugLog("Error in writing data file: "+DATAPATH)
 		Return
 	End If
 	
@@ -64,7 +62,6 @@ End Function
 Function WriteConfig()
 	Local File=WriteFile(CONFIGPATH)
 	If (Not(File))
-		DebugLog("Error in writing config file: "+CONFIGPATH)
 		Return
 	End If
 	
@@ -87,9 +84,7 @@ End Function
 Function WriteLog(Entry$)
 	If (DEBUG)
 		Local File=OpenFile(LOGPATH)
-		If (Not(File))
-			DebugLog("Could not write debuglog: "+LOGPATH)
-		Else
+		If (File)
 			SeekFile(File,FileSize(LOGPATH)-1)
 			WriteLine File,Entry+Chr(13)+Chr(10)
 			CloseFile File
@@ -109,7 +104,6 @@ End Function
 
 Function ProcessLine(s_Ini_Line$)
 	If (Not(Instr(s_Ini_Line,"=")))
-		DebugLog("No equalifier in line: "+s_Ini_Line)
 		Return
 	End If
 		
@@ -128,34 +122,25 @@ Function ProcessLine(s_Ini_Line$)
 	
 	Select(s_Property)
 		Case Trim(Lower(Replace(CONF_CONTROL_METHOD," ",""))):
-			DebugLog("Reading "+CONF_CONTROL_METHOD+": "+s_Value)
 			CURRENT_CONTROL_METHOD=(Int(s_Value)<>False)
 		Case Trim(Lower(Replace(CONF_KEY_LEFT," ",""))):
-			DebugLog("Reading "+CONF_KEY_LEFT+": "+s_Value)
 			CTRL_KEY_LEFT=Int(s_Value)
 		Case Trim(Lower(Replace(CONF_KEY_RIGHT," ",""))):
-			DebugLog("Reading "+CONF_KEY_RIGHT+": "+s_Value)
 			CTRL_KEY_RIGHT=Int(s_Value)
 		Case Trim(Lower(Replace(CONF_KEY_LAUNCH," ",""))):
-			DebugLog("Reading "+CONF_KEY_LAUNCH+": "+s_Value)
 			CTRL_KEY_LAUNCH=Int(s_Value)
 		Case Trim(Lower(Replace(CONF_JOY_PORT," ",""))):
-			DebugLog("Reading "+CONF_JOY_PORT+": "+s_Value)
 			JOY_PORT=Int(s_Value)
 		Case Trim(Lower(Replace(CONF_JOY_LAUNCH," ",""))):
-			DebugLog("Reading "+CONF_JOY_LAUNCH+": "+s_Value)
 			CTRL_JOY_LAUNCH=Int(s_Value)
 		Case Trim(Lower(Replace(CONF_JOY_DEADZONE," ",""))):
-			DebugLog("Reading "+CONF_JOY_DEADZONE+": "+s_Value)
 			JOY_DEADZONE=Float(s_Value)	
 		Case Trim(Lower(Replace(CONF_VOL_MUS," ",""))):
-			DebugLog("Reading "+CONF_VOL_MUS+": "+s_Value)
 			AUDIO_MUS_VOL#=Float(s_Value)	
 			
 		Default:
-			DebugLog("Unknown configuration line: "+s_Ini_Line)
 	End Select
 End Function
 ;~IDEal Editor Parameters:
-;~F#16#26#30#3F#56#63#6D
+;~F#16#26#2F#3D#53#5E#68
 ;~C#Blitz3D

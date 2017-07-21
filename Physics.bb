@@ -67,7 +67,7 @@ Function Bounce(B.BALL, Entity,nX#,nY#)
 		
 		If (BatCol) And EntityY(B\Entity)<((BAT_THICKSIZE+(MeshHeight(B\Entity)*0.5))+BALL_SIZE)
 			
-			PlayBallSound(SND_BALL_BOUNCE_BAT)
+			PlayBallSound(SND_BALL_BOUNCE_BAT,True)
 			
 			SpeedModifier =	BAT_COLLISIONBALL_INFLUENCE*Sgn(BATSPEED)
 		End If		
@@ -123,13 +123,15 @@ Function Bounce(B.BALL, Entity,nX#,nY#)
 				KillAlien(GetAlienFromEntity(Entity))
 			Else
 				
-				If Not(BatCol) Then PlayBallSound(SND_BALL_BOUNCE_BOUND)
+				If (Not(BatCol))
+					PlayBallSound(SND_BALL_BOUNCE_BOUND,True)
+				End If
 				
 			;Removed - There are serious issues with the Blitz3D collision system that make it impossible to have a CATCH special power up.
 				
 ;				If (EntityCollided(B\Entity,COLLISION_BAT)=Entity)
 ;					If (Entity=BAT)
-;						DebugLog("Bat and Ball collision")
+				
 ;						ResetEntity B\Entity
 ;						ResetEntity Entity
 ;						CatchBall(B)
@@ -202,5 +204,5 @@ Function RoundedTrig#(Result#)
 	Return Result#
 End Function
 ;~IDEal Editor Parameters:
-;~F#8#1B#2F#91#9C#BB#C5
+;~F#8#1B#2F#93#9E#BD#C7
 ;~C#Blitz3D

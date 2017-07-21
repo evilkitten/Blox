@@ -130,8 +130,8 @@ Function DetermineSpecialType()
 	;Adds weighting to the probability of the type of special spawned.
 	Local Common=Rand(100)
 	If (Common<20) Then Return SPECIAL_SCORE
-	If (Common<45) Then Return SPECIAL_SHRINK
-	If (Common<60) Then Return SPECIAL_FADE
+	If (Common<45) Then Return SPECIAL_SHRINK+(CHEAT_MODE*3)
+	If (Common<60) Then Return SPECIAL_FADE+CHEAT_MODE
 	If (Common<73) Then Return SPECIAL_SLOW
 	If (Common<85) Then Return SPECIAL_EXTEND
 	If (Common<95) Then Return SPECIAL_MULTIBALL
@@ -154,7 +154,8 @@ Function SpawnSpecial(X#,Y#)
 End Function
 
 Function ChanceToSpawnSpecial()
-	Return (Rnd(0.0,1.0)<SPECIAL_CHANCE)
+	If (CHEAT_MODE) Then Return True
+		Return (Rnd(0.0,1.0)<SPECIAL_CHANCE)
 End Function
 
 Function PopulateSpecialMasterMesh(n)
@@ -294,5 +295,5 @@ Function AddBallToPlay()
 	End If
 End Function
 ;~IDEal Editor Parameters:
-;~F#1A#21#38#42#67#70#80#8C#9B#9F#BD#C6#E1#FD#106#110
+;~F#1A#21#38#42#67#70#80#8C#9B#A0#BE#C7#E2#FE#107#111
 ;~C#Blitz3D

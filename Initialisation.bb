@@ -2,6 +2,7 @@ Function Initialise()
 	SeedRnd MilliSecs()
 	AppTitle"Blox","Thank you for playing Blox! Are you sure you wish to exit the game?"
 	
+	InitialiseCommandLine
 	InitialiseControl
 	InitialiseData
 	InitialiseLogFile
@@ -29,6 +30,14 @@ Function Initialise()
 	WriteLog("Data library: "+DATAPATH)
 	
 	If (ChannelPlaying(CHN_THEME)) Then WriteLog("Theme Initialised")
+End Function
+
+Function InitialiseCommandLine()
+	Local clP$=CommandLine()
+	
+	If (Instr(Lower(clP),"/dev"))
+		CHEAT_MODE=True
+	End If
 End Function
 
 Function InitialiseCamera()
@@ -81,12 +90,10 @@ Function InitialiseData()
 	DATAPATH=DATAPATH+DATAFILE
 	
 	If (FileType(CONFIGPATH)<>1)
-		DebugLog("Cannot read configfile. Setting default values")
 		WriteConfig
 	End If
 	
 	If (FileType(DATAPATH)<>1)
-		DebugLog("Cannot read datafile. Setting default values")
 		InitialiseDefaultData
 		WriteData
 	End If
@@ -133,7 +140,7 @@ Function InitialiseSounds()
 	
 ;	;SND_BRICK_DAMAGE=LoadSound(SOUNDPATH+"brickdamage.ogg")
 	SND_BRICK_DESTROY=LoadSound(SOUNDPATH+"brickdestroy.ogg")
-	SND_BRICK_INVINCIBLE=LoadSound(SOUNDPATH+"brickinvincible.ogg")
+	SND_BRICK_INVINCIBLE=LoadSound(SOUNDPATH+"bounceinvincible.ogg")
 	SND_BRICK_IMPOSSIBLE_TIMEOUT=LoadSound(SOUNDPATH+"invincibledestroy.ogg")
 	
 	SND_BAT_BOUND=LoadSound(SOUNDPATH+"batwall.ogg")
@@ -144,8 +151,8 @@ Function InitialiseSounds()
 	SND_ALIEN_SPAWN=LoadSound(SOUNDPATH+"alienspawn.ogg")
 	SND_ALIEN_DESTROY=LoadSound(SOUNDPATH+"aliendestroy.ogg")
 	
-	SND_PLAYER_LIFELOST=LoadSound(SOUNDPATH+"lifelost.ogg")
-	SND_PLAYER_LIFEGAINED=LoadSound(SOUNDPATH+"lifegained.ogg")
+	SND_PLAYER_LIFELOST=LoadSound(SOUNDPATH+"lifedestroy.ogg")
+	SND_PLAYER_LIFEGAINED=LoadSound(SOUNDPATH+"lifespawn.ogg")
 	
 	;SND_SPECIAL_EXTEND=LoadSound(SOUNDPATH+"specialextend.ogg")
 	;SND_SPECIAL_REDUCE=LoadSound(SOUNDPATH+"specialreduce.ogg")
@@ -439,7 +446,6 @@ End Function
 Function InitialiseLogFile()
 	Local File=WriteFile(LOGPATH)
 	If (Not(File))
-		DebugLog("No logging")
 		DEBUG=False
 	Else
 		CloseFile File
@@ -473,6 +479,6 @@ Function InitialiseRoundFeatures()
 	
 End Function
 ;~IDEal Editor Parameters:
-;~F#21#30#34#61#65#6A#70#80#9D#AC#C0#D3#E4#116#128#14A#150#154#158#15F
-;~F#171#18E#1B2#1B6#1C0#1C7#1CC
+;~F#0#22#2A#39#3D#68#6C#71#77#87#A4#B3#C7#DA#EB#11D#12F#151#157#15B
+;~F#15F#166#178#195#1B9#1BD#1C6#1CD#1D2
 ;~C#Blitz3D

@@ -51,6 +51,9 @@ Function CallRender()
 	RenderWorld
 	
 	ShowHud
+	
+	If (CHEAT_MODE) Then Text 0,0,"DEBUG MODE ENABLED"
+	
 	Flip False
 	
 	FrameLimit
@@ -358,5 +361,5 @@ Function RandomColourComponent()
 	Return C
 End Function
 ;~IDEal Editor Parameters:
-;~F#30#3A#43#6D#75#7D#85#9A#C3#D7#118#160
+;~F#3D#46#70#78#80#88#9D#C6#DA#11B#163
 ;~C#Blitz3D

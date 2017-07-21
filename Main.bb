@@ -1,12 +1,13 @@
-ChangeDir "F:\bb\B3D\WIP\Blox\";Replace(systempropperty("appdir")+"\","\\","\")
+ChangeDir Replace(SystemProperty("appdir")+"\","\\","\");"F:\bb\B3D\WIP\Blox\";
 
 Include"Data.bb"
 
 Include"Include.bb"
 
-Runtime
+Global CHEAT_MODE; Yes you read that right.
+Global GAME_STATE_EXIT; Currently NO CONDITIONS EXIST to set this flag To True... preserved For future potential If necessary.
 
-Global GAME_STATE_EXIT; Currently NO CONDITIONS EXIST to set this flag to true... preserved for future potential if necessary.
+Runtime
 
 Function Runtime()
 	Initialise
@@ -50,7 +51,7 @@ Function CheckDeath(B.BALL)
 End Function
 
 Function DoDeath()
-	If (STATE=STATE_GAME)
+	If ((STATE=STATE_GAME) And (CHEAT_MODE=False))
 		;There are rare occurrences where CPU is not able to cathch the ball.
 		PlayPlayerSound(SND_PLAYER_LIFELOST)
 		PLAYER_LIVES=PLAYER_LIVES-1
@@ -139,7 +140,7 @@ Function AddRoundFeatures()
 	If (ROUND > BACKDROP_TEXTURECOUNTFRAME)
 ;		Local FeatureLevel=(ROUND Mod 7)+1
 ;		If (FeatureLevel And 1)
-;			DebugLog("Perspective")
+		
 ;			OBJECT_SHADOWS_ON=False
 ;			RotateEntity BACKDROP,45,180,0,True
 ;		End If
@@ -148,12 +149,12 @@ Function AddRoundFeatures()
 ;			ShowEntity MIRROR
 ;			EntityAlpha BACKDROP,MIRROR_REFRACTICVE_INDEX
 ;			RotateEntity MIRROR,45,180,0,True
-;			DebugLog("Mirror")	
+		
 ;		End If
 		
 ;		If (FeatureLevel And 4)
 ;			;Inverted
-;			DebugLog("Viewport")	
+		
 ;			RotateEntity CAMERA,0,0,180,True
 ;		End If
 		
@@ -180,5 +181,5 @@ Function Animation()
 	UpdateBricks
 End Function
 ;~IDEal Editor Parameters:
-;~F#A#F#15#2D#33#45#57#5E#67#6C#84#A6
+;~F#B#10#16#2E#34#46#58#5F#68#6D#85#A7
 ;~C#Blitz3D
