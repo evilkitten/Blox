@@ -154,6 +154,8 @@ Function InitialiseSounds()
 	SND_PLAYER_LIFELOST=LoadSound(SOUNDPATH+"lifedestroy.ogg")
 	SND_PLAYER_LIFEGAINED=LoadSound(SOUNDPATH+"lifespawn.ogg")
 	
+	SND_SPECIAL_SPAWN=LoadSound(SOUNDPATH+"specialspawn.ogg")
+	
 	;SND_SPECIAL_EXTEND=LoadSound(SOUNDPATH+"specialextend.ogg")
 	;SND_SPECIAL_REDUCE=LoadSound(SOUNDPATH+"specialreduce.ogg")
 	;SND_SPECIAL_FADE=LoadSound(SOUNDPATH+"specialfade.ogg")
@@ -342,7 +344,7 @@ Function InitialiseBrickTextures()
 End Function
 
 Function InitialisePatterns()
-	RemoveAllBricks
+	;RemoveAllBricks
 End Function
 
 Function InitialiseAliens()
@@ -479,6 +481,6 @@ Function InitialiseRoundFeatures()
 	
 End Function
 ;~IDEal Editor Parameters:
-;~F#0#22#2A#39#3D#68#6C#71#77#87#A4#B3#C7#DA#EB#11D#12F#151#157#15B
-;~F#15F#166#178#195#1B9#1BD#1C6#1CD#1D2
+;~F#0#22#2A#39#3D#68#6C#71#77#87#A6#B5#C9#DC#ED#11F#131#153#159#15D
+;~F#161#168#17A#197#1BB#1BF#1C8#1CF#1D4
 ;~C#Blitz3D

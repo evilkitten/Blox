@@ -273,5 +273,5 @@ Function DestroyBrick(BR.BRICK_DATA)
 	Delete BR
 End Function
 ;~IDEal Editor Parameters:
-;~F#11#28#3A#4F#61#75#AE#B2#B6#C0#C5#E0#EB#F1#10B
+;~F#11#28#3A#4F#61#75#AE#B2#C0#C5#E0#EB#F1#10B
 ;~C#Blitz3D

@@ -151,6 +151,9 @@ Function SpawnSpecial(X#,Y#)
 ;	SP\Shadow=CreateShadow(SPECIAL_SHADOWSHINE_SIZE,SPECIAL_SHADOWSHINE_SIZE,SP\Entity)
 	PositionEntity SP\Entity,X,Y,GENERIC_Z_OFFSET,True
 	ShowEntity SP\Entity
+	
+	PlaySpecialSound(SND_SPECIAL_SPAWN)
+	
 End Function
 
 Function ChanceToSpawnSpecial()
@@ -295,5 +298,5 @@ Function AddBallToPlay()
 	End If
 End Function
 ;~IDEal Editor Parameters:
-;~F#1A#21#38#42#67#70#80#8C#9B#A0#BE#C7#E2#FE#107#111
+;~F#1A#21#38#42#67#70#80#8C#9E#A3#C1#CA#E5#101#10A#114
 ;~C#Blitz3D

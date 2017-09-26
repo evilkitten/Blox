@@ -131,13 +131,14 @@ Function Bounce(B.BALL, Entity,nX#,nY#)
 				
 ;				If (EntityCollided(B\Entity,COLLISION_BAT)=Entity)
 ;					If (Entity=BAT)
-				
-;						ResetEntity B\Entity
-;						ResetEntity Entity
-;						CatchBall(B)
+;						If ((EntityY(B\Entity)<(BAT_THICKSIZE+(MeshHeight(B\Entity)*0.5))))
+;							ResetEntity B\Entity
+;							ResetEntity Entity
+;							CatchBall(B)
+;						End If
 ;					End If
 ;				End If
-				
+					
 				ResetEntity B\Entity
 				ResetEntity Entity	;Uncommenting this has not yet resulted in collision bugs. 
 			End If
@@ -204,5 +205,5 @@ Function RoundedTrig#(Result#)
 	Return Result#
 End Function
 ;~IDEal Editor Parameters:
-;~F#8#1B#2F#93#9E#BD#C7
+;~F#8#1B#2F#94#9F#BE#C8
 ;~C#Blitz3D

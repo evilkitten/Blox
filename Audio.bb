@@ -52,6 +52,8 @@ Global SND_ALIEN_DESTROY
 Global SND_PLAYER_LIFELOST
 Global SND_PLAYER_LIFEGAINED
 
+Global SND_SPECIAL_SPAWN
+
 Global SND_SPECIAL_EXTEND
 Global SND_SPECIAL_REDUCE
 Global SND_SPECIAL_FADE
@@ -419,5 +421,5 @@ Function ChangeMusic(ThemePath$,NotifyThemeChange=True)
 	AUDIO_TIMESTAMP=MilliSecs()
 End Function
 ;~IDEal Editor Parameters:
-;~F#4A#5E#6A#76#82#8E#9A#CF#163#190
+;~F#4C#60#6C#78#84#90#9C#D1#165#192
 ;~C#Blitz3D
